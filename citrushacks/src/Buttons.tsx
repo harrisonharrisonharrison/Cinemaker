@@ -35,22 +35,22 @@ export default function TrailerPlayer() {
         className="rounded-lg shadow-xl"
       ></iframe>
 
-      <div className="absolute space-x-4">
+      <div className="absolute">
         <button
           onClick={handleLike}
-          className="absolute ml-150 mt-30 px-6 py-2 bg-green-500 text-white font-bold rounded hover:bg-green-600"
+          className="absolute ml-150 mt-30 px-6 py-2 bg-radial from-slate-900 text-white rounded hover:bg-green-600"
         >
           👍 
         </button>
         <button
           onClick={handleDislike}
-          className="absolute ml-150 mt-80 px-6 py-2 bg-red-500 text-white font-bold rounded hover:bg-red-600"
+          className="absolute ml-150 mt-80 px-6 py-2 bg-radial from-slate-900 text-white rounded hover:bg-red-600"
         >
           👎 
         </button>
         <button
           onClick={handleSkip}
-          className="absolute ml-150 mt-130 px-6 py-2 bg-blue-500 text-white font-bold rounded hover:bg-blue-600"
+          className="absolute ml-150 mt-130 px-6 py-2 bg-radial from-slate-900 text-white rounded hover:bg-blue-600"
         >
           ⏭ 
         </button>

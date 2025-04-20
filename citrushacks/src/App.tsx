@@ -14,8 +14,8 @@ function App() {
   return (
     <div className=''>
       
-      <div className="text-4xl -mt-0 font-serif font-bold justify-center">
-            Welcome to Cinemaker
+      <div className="text-center text-3xl font-extrabold font-serif tracking-wide drop-shadow-[0_5px_15px_rgba(255,255,255,0.25)] bg-gradient-to-br to-slate-50 bg-clip-text text-transparent">
+        Welcome to <span className='italic'>Cinemaker</span>
       </div>
 
       <div className='bg-conic from-red-600 to-black'>
