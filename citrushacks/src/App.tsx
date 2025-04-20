@@ -1,5 +1,5 @@
 import './App.css'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import curtain from './assets/curtain.png'
 
 
