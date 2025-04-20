@@ -117,7 +117,7 @@ function App() {
             </div>
 
             {/* Right-side Buttons */}
-            <div className="absolute ml-300 flex flex-col gap-4 mt-14">
+            <div className="absolute ml-270 flex flex-col gap-4 mt-14">
               <button
                 onClick={handleLike}
                 className=" text-white px-6 py-2 rounded-xl hover:bg-green-800 transition"
@@ -142,6 +142,7 @@ function App() {
           <p className="text-xl mt-10">Loading trailers...</p>
         )}
       </div>
+    
     </div>
   );
 }
