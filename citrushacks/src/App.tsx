@@ -20,7 +20,7 @@ function App() {
 
       <div className='bg-conic from-red-600 to-black'>
       <div className={`absolute inset-0 z-1 transition-transform duration-[2000ms] ease-in-out ${
-            slideOut ? 'translate-x-full' : 'translate-x-0'
+            slideOut ? 'translate-x-97/100' : 'translate-x-0'
           }`}
         >
         <img src={curtain}
@@ -28,7 +28,7 @@ function App() {
       </div>
       
       <div className={`absolute inset-0 z-1 transition-transform duration-[2000ms] ease-in-out ${
-            slideOut ? '-translate-x-full' : 'translate-x-0'
+            slideOut ? '-translate-x-97/100' : 'translate-x-0'
           }`}
         >
         <img src={curtain}
