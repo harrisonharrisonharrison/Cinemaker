@@ -66,11 +66,11 @@ function App() {
   };
 
   const handlePrev = () => {
-    setCurrentIndex((prev) => (prev - 1 + trailers.length) % trailers.length);
+    
   };
 
   const handleSkip = () => {
-    setCurrentIndex((prev) => (prev + 3) % trailers.length);
+    
   };
 
   const currentTrailer = trailers[currentIndex];
@@ -98,8 +98,8 @@ function App() {
             <div className="relative">
               <h2 className="text-2xl font-semibold mb-4">{currentTrailer.title}</h2>
               <iframe
-                width="896"
-                height="504"
+                width="1120"
+                height="630"
                 src={`https://www.youtube.com/embed/${currentTrailer.key}`}
                 title={currentTrailer.title}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
