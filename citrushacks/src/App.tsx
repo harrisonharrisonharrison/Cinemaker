@@ -2,7 +2,8 @@ import './App.css'
 import { useEffect, useState } from 'react'
 import curtain from './assets/curtain.png'
 import { Typewriter } from 'react-simple-typewriter'
-
+import thumb from './assets/thumbs.png'
+import dthumb from './assets/dthumb.png'
 
 const apiKey = import.meta.env.VITE_TMDB_API_KEY;
 const trendingURL = `https://api.themoviedb.org/3/trending/all/week?api_key=${apiKey}`;
@@ -119,19 +120,19 @@ function App() {
             <div className="absolute ml-300 flex flex-col gap-4 mt-14">
               <button
                 onClick={handleLike}
-                className="bg-green-600 text-white px-6 py-2 rounded-xl hover:bg-pink-800 transition"
+                className=" text-white px-6 py-2 rounded-xl hover:bg-green-800 transition"
               >
-                👍
+                <img src={thumb}/>
               </button>
               <button
                 onClick={handleDislike}
-                className="bg-pink-600 text-white px-6 py-2 rounded-xl hover:bg-pink-800 transition"
+                className=" text-white px-6 py-2 rounded-xl hover:bg-pink-800 transition"
               >
-                👎
+                <img src={dthumb}/>
               </button>
               <button
                 onClick={handleSkip}
-                className="bg-yellow-500 text-black px-6 py-2 rounded-xl hover:bg-yellow-600 transition"
+                className=" text-black px-6 py-2 rounded-xl hover:bg-blue-600 transition"
               >
                 ⏭
               </button>
