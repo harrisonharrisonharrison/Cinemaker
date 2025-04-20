@@ -78,7 +78,6 @@ function App() {
 
   return (
     <div className="text-white text-center relative">
- 
       <div className="text-4xl mt-6 font-serif font-bold">
         <Typewriter words={["Welcome to Cinemaker"]}
         loop = {1}
@@ -99,11 +98,11 @@ function App() {
       </div>
 
       {/* Trailer + Buttons */}
-      <div className="flex justify-center items-start mt-20 gap-6">
+      <div className="flex justify-center items-start mt-5 gap-6">
         {currentTrailer ? (
           <>
             <div className="relative">
-              <h2 className="text-2xl font-semibold mb-4">{currentTrailer.title}</h2>
+              <h2 className="bg-radial to-black text-amber-200 text-2xl font-serif font-semibold">{currentTrailer.title}</h2>
               <iframe
                 width="1120"
                 height="630"
@@ -116,10 +115,10 @@ function App() {
             </div>
 
             {/* Right-side Buttons */}
-            <div className="flex flex-col gap-4 mt-14">
+            <div className="absolute ml-300 flex flex-col gap-4 mt-14">
               <button
                 onClick={handleLike}
-                className="bg-pink-600 text-white px-6 py-2 rounded-xl hover:bg-pink-800 transition"
+                className="bg-green-600 text-white px-6 py-2 rounded-xl hover:bg-pink-800 transition"
               >
                 👍
               </button>
