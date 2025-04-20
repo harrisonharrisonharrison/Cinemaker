@@ -1,6 +1,7 @@
 import './App.css'
 import { useEffect, useState } from 'react'
 import curtain from './assets/curtain.png'
+import { Typewriter } from 'react-simple-typewriter'
 
 const apiKey = 'eaa20b84ad2e09a53cc08ce61510dd69';
 const trendingURL = `https://api.themoviedb.org/3/trending/all/week?api_key=${apiKey}`;
@@ -77,8 +78,14 @@ function App() {
 
   return (
     <div className="text-white text-center relative">
+ 
       <div className="text-4xl mt-6 font-serif font-bold">
-        Welcome to Cinemaker
+        <Typewriter words={["Welcome to Cinemaker"]}
+        loop = {1}
+        typeSpeed = {100}
+        deleteSpeed = {50}
+        delaySpeed = {10000}
+        />
       </div>
 
       {/* Curtain animation */}
