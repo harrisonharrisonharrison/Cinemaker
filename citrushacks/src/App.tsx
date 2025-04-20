@@ -41,7 +41,8 @@ function App() {
         className="absolute top-0 right-1/2 w-full object-cover"/>
       </div>
       </div>
-    
+
+      <iframe width="1120" height="630" src="https://www.youtube.com/embed/zdG0X-6bNU0?si=1_qr-0TFAcMSzAEe" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
     
     </div>
     
