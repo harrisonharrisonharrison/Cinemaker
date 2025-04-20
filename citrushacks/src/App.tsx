@@ -3,7 +3,8 @@ import { useEffect, useState } from 'react'
 import curtain from './assets/curtain.png'
 import { Typewriter } from 'react-simple-typewriter'
 
-const apiKey = 'eaa20b84ad2e09a53cc08ce61510dd69';
+
+const apiKey = import.meta.env.VITE_TMDB_API_KEY;
 const trendingURL = `https://api.themoviedb.org/3/trending/all/week?api_key=${apiKey}`;
 
 interface Trailer {
