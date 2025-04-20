@@ -30,16 +30,18 @@ All in real time—so you spend less time searching, and more time watching.
 - Styled using **Tailwind CSS** for a modern, responsive UI
 
 **Backend:**  
+- Trailers were integrated with **TMDB's API**
 - **Flask** server with endpoints:  
   - `/api/skip` for skipping to the next trailer  
   - `/api/describe` for AI-generated summaries  
 - Integrated with **Google GenAI's Gemini API**
 
 **Data Flow:**  
-1. User skips or selects a trailer  
-2. React sends a request to Flask  
-3. Flask queries Gemini for a summary  
-4. React receives and updates UI in real-time
+1. User skips or selects a trailer
+2. A request gets sent to TMDB for the next movie
+3. React sends a request to Flask  
+4. Flask queries Gemini for a summary  
+5. React receives and updates UI in real-time
 
 **Deployment Tools:**  
 - `Flask-CORS` for smooth client-server communication  
@@ -56,6 +58,7 @@ All in real time—so you spend less time searching, and more time watching.
 - [Flask](https://flask.palletsprojects.com/)
 - [Python](https://www.python.org/)
 - [Google GenAI – Gemini](https://deepmind.google/technologies/gemini/)
+- [TMDB API](https://developer.themoviedb.org/docs/getting-started)
 - HTML / CSS
 
 ---
@@ -71,7 +74,7 @@ All in real time—so you spend less time searching, and more time watching.
 ## Accomplishments
 
 - Seamless UX with no reloads or interruptions
-- First-time integration of **Google GenAI Gemini**
+- First-time integration of APIs
 - Implemented Like/Dislike logic to adapt trailer suggestions
 
 ---
