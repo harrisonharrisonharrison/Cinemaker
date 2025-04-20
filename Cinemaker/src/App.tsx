@@ -13,6 +13,14 @@ const trendingURL = `https://api.themoviedb.org/3/trending/all/week?api_key=${ap
 interface Trailer {
   title: string;
   key: string;
+  id: number;
+  media_type: string;
+}
+
+interface Genre {
+  id: number;
+ name: string;
+ media_type: string;
 }
 
 // Single white button → hover to reveal Like / Dislike / Skip
@@ -34,7 +42,7 @@ function DropdownActions({
       onMouseLeave={() => setOpen(false)}
     >
       {/* The white “menu” button */}
-      <button className="w-10 h-10 bg-white rounded-full shadow flex items-center justify-center">
+      <button className="w-10 h-10 bg-slate-900 rounded-full shadow flex items-center justify-center">
         ⋮
       </button>
 
@@ -107,11 +115,14 @@ function App() {
 
         const trailerList: Trailer[] = []
         for (const media of data.results) {
+          
           const videoKey = await fetchVideoKey(media.id, media.media_type)
           if (videoKey) {
             trailerList.push({
               title: media.title || media.name || 'Untitled',
               key: videoKey,
+              id: media.id,
+              media_type: media.media_type,
             })
           }
         }
@@ -140,6 +151,25 @@ function App() {
     fetchMovies()
   }, [])
 
+  async function fetchMovieGenres(id: number, mediaType: string) {
+    try {
+      const res = await fetch(
+        `https://api.themoviedb.org/3/${mediaType}/${id}?language=en-US`
+      )
+      const data = await res.json()
+      if (Array.isArray(data.genres)) {
+        return data.genres.map((g: { id: number; name: string }) => g.name);
+      } else {
+        console.warn('No genres field in response:', data);
+        return null;
+      }
+    } catch (err) {
+      console.error('Failed to fetch video key:', err)
+      return null
+    }
+  }
+
+
   useEffect(() => {
     fetch("http://localhost:4999/api/chat", {
       method: "POST",
@@ -149,6 +179,22 @@ function App() {
       .then(data => setMessage(data.response))
       .catch(console.error);
   }, []);
+  
+  async function fetchVideoKey(id: number, mediaType: string) {
+    try {
+      const res = await fetch(
+        `https://api.themoviedb.org/3/${mediaType}/${id}/videos?api_key=${apiKey}`
+      )
+      const data = await res.json()
+      const trailer = data.results.find(
+        (vid: any) => vid.type === 'Trailer' && vid.site === 'YouTube'
+      )
+      return trailer ? trailer.key : null
+    } catch (err) {
+      console.error('Failed to fetch video key:', err)
+      return null
+    }
+  }
 
   const handleSkip = () => {
     setCurrentIndex((prev) => (prev + 1) % trailers.length);
@@ -163,12 +209,61 @@ function App() {
     });
   };
 
-  const handleLike = () => {
+  const handleLike = async () => {
+    setCurrentIndex((prev) => (prev + 1) % trailers.length);
+    const genreList: Genre[] = [];
+    const media = trailers[currentIndex];
+    const videoGenres = await fetchMovieGenres(media.id, media.media_type)
+
+
+    axios.post("http://localhost:4999/api/title", {
+      title: trailers[currentIndex+1].title,
+    })
+    .then(function (response) {
+      setMessage(response.data.response);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+
+    for (const genre of videoGenres) {
+      genreList.push({
+        id: genre.id,
+        name: genre.name,
+        media_type: media.media_type,
+      })
+    }
+    const genreParam = genreList.map(g => g.id).join(',');
+    const url = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=${genreParam}&api_key=${apiKey}`;
+    const response = await fetch(url);
+    const data = await response.json();
+    const trailerList: Trailer[] = []
+    for (const media of data.results) {
+      const videoKey = await fetchVideoKey(media.id, media.media_type)
+      if (videoKey) {
+        trailerList.push({
+          title: media.title || media.name || 'Untitled',
+          key: videoKey,
+          id: media.id,
+          media_type: media.media_type,
+        })
+      }
+    }
+    setTrailers(trailerList)
 
   };
 
   const handleDislike = () => {
-    // your dislike logic
+    setCurrentIndex((prev) => (prev + 1) % trailers.length);
+    axios.post("http://localhost:4999/api/title", {
+      title: trailers[currentIndex+1].title,
+    })
+    .then(function (response) {
+      setMessage(response.data.response);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
   }
 
   const currentTrailer = trailers[currentIndex]

@@ -22,7 +22,7 @@ def set_title():
     title = data.get("title", "")
     print(title)
     response = client.models.generate_content(
-        model="gemini-2.0-flash", contents=f"Tell me what the show/movie {title} is about in a few words"
+        model="gemini-2.0-flash", contents=f"Tell me what the show/movie {title} is about in a short paragraph"
     )
     print(response.text)
     return jsonify({"response": response.text})
@@ -30,7 +30,7 @@ def set_title():
 @app.route("/api/chat", methods=["POST"])
 def chat():
     response = client.models.generate_content(
-        model="gemini-2.0-flash", contents=f"Tell me what the show/movie {title} is about in a few words"
+        model="gemini-2.0-flash", contents=f"Tell me what the show/movie {title} is about in a short paragraph"
     )
     print(response.text)
     return jsonify({"response": response.text})
