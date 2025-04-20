@@ -6,7 +6,7 @@
 
 ## Inspiration
 
-We wanted to revolutionize how people decide *what to watch next*. Instead of endlessly scrolling through pages and vague descriptions, **Cinemaker** delivers an immersive, instant-viewing experience by combining **YouTube trailers** with **AI-generated summaries**.
+We wanted to revolutionize how people decide *what to watch next*. Instead of endlessly scrolling through pages and vague descriptions, **Cinemaker** delivers an immersive, instant-viewing taste testing experience by combining **YouTube trailers** with **AI-generated summaries**.
 
 ---
 
