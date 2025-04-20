@@ -40,3 +40,17 @@
 .read-the-docs {
   color: #888;
 }
+
+#movies {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.movie_item {
+  margin: 1rem;
+  text-align: center;
+  color: white;
+  font-size: 25px;
+  max-width: 500px;
+}
