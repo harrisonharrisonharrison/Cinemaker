@@ -14,7 +14,7 @@ function App() {
   return (
     <div className=''>
       
-      <div className="text-center text-3xl font-extrabold font-serif tracking-wide drop-shadow-[0_5px_15px_rgba(255,255,255,0.25)] bg-gradient-to-br to-slate-50 bg-clip-text text-transparent">
+      <div className="text-center -mt-10 text-3xl font-extrabold font-serif tracking-wide drop-shadow-[0_5px_15px_rgba(255,255,255,0.25)] bg-gradient-to-br to-slate-50 bg-clip-text text-transparent">
         Welcome to <span className='italic'>Cinemaker</span>
       </div>
 
