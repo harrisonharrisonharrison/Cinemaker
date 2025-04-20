@@ -5,11 +5,9 @@ from flask_cors import CORS
 from google import genai
 from dotenv import load_dotenv, find_dotenv
 
-# Load your API key from the environment
-
 load_dotenv(find_dotenv())
 
-real_api_key = os.getenv('API_KEY')  # Make sure you set GEMINI_API_KEY in your .env or shell
+real_api_key = os.getenv('API_KEY') 
 
 app = Flask(__name__)
 CORS(app)

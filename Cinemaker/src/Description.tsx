@@ -19,7 +19,7 @@ function Description() {
 
   return (
     <div className="p-8 text-xl font-bold">
-      Flask says: {message || "Loading..."}
+      {message || "Loading..."}
     </div>
   );
 }
