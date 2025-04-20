@@ -78,7 +78,7 @@ function App() {
 
   return (
     <div className="text-white text-center relative">
-      <div className="text-4xl mt-6 font-serif font-bold">
+      <div className="text-4xl font-serif font-bold">
         <Typewriter words={["Welcome to Cinemaker"]}
         loop = {1}
         typeSpeed = {100}
