@@ -14,17 +14,27 @@ CORS(app)
 
 client = genai.Client(api_key=real_api_key)
 
+title = "The Last of Us"
+
+@app.route("/api/title", methods=["POST"])
+def set_title():
+    data = request.get_json()
+    title = data.get("title", "")
+    print(title)
+    response = client.models.generate_content(
+        model="gemini-2.0-flash", contents=f"Tell me what the show/movie {title} is about in a few words"
+    )
+    print(response.text)
+    return jsonify({"response": response.text})
 
 @app.route("/api/chat", methods=["POST"])
 def chat():
     response = client.models.generate_content(
-        model="gemini-2.0-flash", contents="Explain how AI works in a few words"
+        model="gemini-2.0-flash", contents=f"Tell me what the show/movie {title} is about in a few words"
     )
-    try:
-        print(response.text)
-        return jsonify({"response": response.text})
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+    print(response.text)
+    return jsonify({"response": response.text})
+
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+    app.run(debug=True, port=4999)

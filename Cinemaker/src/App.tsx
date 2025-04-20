@@ -4,6 +4,7 @@ import curtain from './assets/curtain.png'
 import { Typewriter } from 'react-simple-typewriter'
 import thumb from './assets/thumbs.png'
 import dthumb from './assets/dthumb.png'
+import axios from "axios";
 
 const apiKey = import.meta.env.VITE_TMDB_API_KEY;
 const trendingURL = `https://api.themoviedb.org/3/trending/all/week?api_key=${apiKey}`;
@@ -17,6 +18,7 @@ function App() {
   const [slideOut, setSlideOut] = useState(false);
   const [trailers, setTrailers] = useState<Trailer[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     const timer = setTimeout(() => setSlideOut(true), 500);
@@ -64,12 +66,31 @@ function App() {
     fetchMovies();
   }, []);
 
+  useEffect(() => {
+    fetch("http://localhost:4999/api/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+    })
+      .then(res => res.json())
+      .then(data => setMessage(data.response))
+      .catch(console.error);
+  }, []);
+
   const handleSkip = () => {
     setCurrentIndex((prev) => (prev + 1) % trailers.length);
+    axios.post("http://localhost:4999/api/title", {
+      title: trailers[currentIndex+1].title,
+    })
+    .then(function (response) {
+      setMessage(response.data.response);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
   };
 
   const handleLike = () => {
-    
+
   };
 
   const handleDislike = () => {
@@ -142,6 +163,9 @@ function App() {
           <p className="text-xl mt-10">Loading trailers...</p>
         )}
       </div>
+      
+
+      <div className="p-8 text-xl font-bold">{message || "Loading..."}</div>
     
     </div>
   );
