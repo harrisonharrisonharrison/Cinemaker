@@ -61,15 +61,15 @@ function App() {
     fetchMovies();
   }, []);
 
-  const handleNext = () => {
+  const handleSkip = () => {
     setCurrentIndex((prev) => (prev + 1) % trailers.length);
   };
 
-  const handlePrev = () => {
+  const handleLike = () => {
     
   };
 
-  const handleSkip = () => {
+  const handleDislike = () => {
     
   };
 
@@ -111,13 +111,13 @@ function App() {
             {/* Right-side Buttons */}
             <div className="flex flex-col gap-4 mt-14">
               <button
-                onClick={handlePrev}
+                onClick={handleLike}
                 className="bg-pink-600 text-white px-6 py-2 rounded-xl hover:bg-pink-800 transition"
               >
                 👍
               </button>
               <button
-                onClick={handleNext}
+                onClick={handleDislike}
                 className="bg-pink-600 text-white px-6 py-2 rounded-xl hover:bg-pink-800 transition"
               >
                 👎
