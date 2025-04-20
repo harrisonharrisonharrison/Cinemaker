@@ -23,7 +23,7 @@ All in real time—so you spend less time searching, and more time watching.
 
 ---
 
-## 🛠 How We Built It
+## How We Built It
 
 **Frontend:**  
 - Built with **React** (functional components, hooks like `useEffect` and `useState`)  
