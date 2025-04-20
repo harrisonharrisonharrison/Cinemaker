@@ -12,7 +12,7 @@ function App() {
   }, []);
 
   return (
-    <div className='overflow-hidden'>
+    <div className=''>
     
       <div className="">
           <span className="absolute top-10 left-100 mx-auto py-4 flex bg-gradient-to-r blur-xl from-slate-50 bg-clip-text text-6xl font-extrabold select-none">
@@ -24,9 +24,9 @@ function App() {
           </h1>
       </div>
 
-      <div className='overflow-hidden'>
+      <div className=''>
       <div className={`absolute inset-0 z-20 transition-transform duration-[2000ms] ease-in-out ${
-            slideOut ? 'translate-x-full overflow-hidden' : 'translate-x-0'
+            slideOut ? 'translate-x-full' : 'translate-x-0'
           }`}
         >
         <img src={curtain}
@@ -34,7 +34,7 @@ function App() {
       </div>
       
       <div className={`absolute inset-0 z-20 transition-transform duration-[2000ms] ease-in-out ${
-            slideOut ? '-translate-x-full overflow-hidden' : 'translate-x-0'
+            slideOut ? '-translate-x-full' : 'translate-x-0'
           }`}
         >
         <img src={curtain}
